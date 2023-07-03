@@ -68,5 +68,53 @@ namespace hoangpdph31561_CSharp1_BaiTap2
                 }
             }
         }
+        public void ThemDoDungKhachHang()
+        {
+            if (HamTao.CheckCount(arrLstKhachHang))
+            {
+                Console.WriteLine("Thông tin khách hàng");
+                int count = 0;
+                int indexSuaDoKhachHang;
+                foreach (var item in arrLstKhachHang)
+                {
+                    Console.WriteLine($"Khác hàng thứ: {count + 1}");
+                    KhachHang customer = (KhachHang)item;
+                    customer.InRa_ThongTinKhachHang();
+                }
+                indexSuaDoKhachHang = Convert.ToInt32(HamTao.GetInput("vị trí khách hàng muốn thêm đồ"));
+                if (indexSuaDoKhachHang - 1 >= arrLstKhachHang.Count)
+                {
+                    Console.WriteLine("Không có khách hàng mà bạn chọn");
+                    return;
+                }
+                KhachHang kh = (KhachHang)arrLstKhachHang[indexSuaDoKhachHang - 1];
+                kh.NhapDoDung();
+                arrLstKhachHang[indexSuaDoKhachHang - 1] = kh;
+            }
+        }
+        public void SuaDoKhachHang()
+        {
+            if (HamTao.CheckCount(arrLstKhachHang))
+            {
+                Console.WriteLine("Thông tin khách hàng");
+                int count = 0;
+                int indexSuaDoKhachHang;
+                foreach (var item in arrLstKhachHang)
+                {
+                    Console.WriteLine($"Khác hàng thứ: {count + 1}");
+                    KhachHang customer = (KhachHang)item;
+                    customer.InRa_ThongTinKhachHang();
+                }
+                indexSuaDoKhachHang = Convert.ToInt32(HamTao.GetInput("vị trí khách hàng muốn sửa đồ"));
+                if (indexSuaDoKhachHang - 1 >= arrLstKhachHang.Count)
+                {
+                    Console.WriteLine("Không có khách hàng mà bạn chọn");
+                    return;
+                }
+                KhachHang kh = (KhachHang)arrLstKhachHang[indexSuaDoKhachHang - 1];
+                kh.SuaDoDung();
+                arrLstKhachHang[indexSuaDoKhachHang - 1] = kh;
+            }
+        }
     }
 }

@@ -107,7 +107,7 @@ namespace hoangpdph31561_CSharp1_BaiTap2
                     dd.InThongTin();
                     count++;
                 }
-                indexMuonXoa = Convert.ToInt32(HamTao.GetInput("stt muốn xóa"));
+                indexMuonXoa = Convert.ToInt32(HamTao.GetInput("số thứ tự muốn xóa"));
                 if(indexMuonXoa - 1 >= arrLstDoDung.Count)
                 {
                     Console.WriteLine("Đồ bạn nhập không tồn tại");
@@ -139,6 +139,58 @@ namespace hoangpdph31561_CSharp1_BaiTap2
                 }
             }
             return sum;
+        }
+        public void SuaDoDung()
+        {
+            if (HamTao.CheckCount(arrLstDoDung))
+            {
+                int count = 0;
+                int indexSuaDoDung;
+                Console.WriteLine("Thông tin đồ dùng");
+                foreach (var item in arrLstDoDung)
+                {
+                    DoDac dd = (DoDac)item;
+                    Console.WriteLine($"Đồ thứ {count + 1}");
+                    dd.InThongTin();
+                    count++;
+                }
+                indexSuaDoDung = Convert.ToInt32(HamTao.GetInput("số thứ tự muốn sửa"));
+                if (indexSuaDoDung - 1 >= arrLstDoDung.Count)
+                {
+                    Console.WriteLine("Đồ bạn nhập không tồn tại");
+                    return;
+                }
+                DoDac doSua = (DoDac)arrLstDoDung[indexSuaDoDung-1];
+                int chonThongTinSua;
+                do
+                {
+                    Console.WriteLine("---Menu sửa thông tin của đồ dùng---");
+                    Console.WriteLine("1. Sửa chiều dài");
+                    Console.WriteLine("2. Sửa chiều rộng");
+                    Console.WriteLine("3. Sửa chiều sâu");
+                    Console.WriteLine("0. Thoát sửa");
+                    chonThongTinSua = Convert.ToInt32(HamTao.GetInputWithRegex("menu cần sửa", @"^[\d]+$"));
+                    switch (chonThongTinSua)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            doSua.ChieuDai = Convert.ToDouble(HamTao.GetInputWithRegex("chiều dài sửa lại", @"^[\d]+\,?[\d]*$"));
+                            break;
+                        case 2:
+                            doSua.ChieuRong = Convert.ToDouble(HamTao.GetInputWithRegex("chiều rộng sửa lại", @"^[\d]+\,?[\d]*$"));
+                            break;
+                        case 3:
+                            doSua.ChieuSau = Convert.ToDouble(HamTao.GetInputWithRegex("chiều sâu sửa lại", @"^[\d]+\,?[\d]*$"));
+                            break;
+                        default:
+                            Console.WriteLine("Sai chương trình mời chọn lại");
+                            break;
+                    }
+                } while (chonThongTinSua !=0);
+                arrLstDoDung[indexSuaDoDung - 1] = doSua;
+                Console.WriteLine("Sửa thành công");
+            }
         }
     }
 }

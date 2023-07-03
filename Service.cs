@@ -71,14 +71,21 @@ namespace hoangpdph31561_CSharp1_BaiTap2
                 }
                 KhachHang kh = (KhachHang)company.ArrLstKhachHang[chonKhachHangXoaDoDung - 1];
                 kh.XoaDoDung();
-                company.ArrLstKhachHang.RemoveAt(chonKhachHangXoaDoDung - 1);
-                company.ArrLstKhachHang.Add(kh);
+                company.ArrLstKhachHang[chonKhachHangXoaDoDung-1] = kh; 
                 Console.WriteLine("Thay đổi thành công");
             }
         }
         public void KetLuanVanChuyen()
         {
             company.CheckVanChuyen();
+        }
+        public void ThemDoDung()
+        {
+            company.ThemDoDungKhachHang();
+        }
+        public void SuaDoKh()
+        {
+            company.SuaDoKhachHang();
         }
     }
 }
