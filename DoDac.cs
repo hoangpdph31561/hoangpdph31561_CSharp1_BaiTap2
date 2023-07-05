@@ -17,7 +17,7 @@ namespace hoangpdph31561_CSharp1_BaiTap2
 
         public DoDac()
         {
-            
+            theTich = TinhTheTich(chieuDai, chieuRong, chieuSau);
         }
 
         public DoDac(double chieuDai, double chieuRong, double chieuSau)
